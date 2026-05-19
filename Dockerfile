@@ -1,4 +1,4 @@
 FROM scratch
 ARG TARGETARCH
-ADD debian-${TARGETARCH}.tar.gz /
+ADD ${TARGETARCH}/trisquel-${TARGETARCH}.tar.gz /
 CMD ["/bin/bash"]

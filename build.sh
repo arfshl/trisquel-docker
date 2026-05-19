@@ -1,6 +1,18 @@
 # export the env
 export RELEASE=ecne
+ARCH=$(uname -m)
+case "$ARCH" in
+    x86_64) ARCH=amd64 ;;
+    amd64) ARCH=amd64 ;;
+    aarch64) ARCH=arm64 ;;
+    arm64) ARCH=arm64 ;;
+    *)
+        echo "Unsupported architecture: $ARCH"
+        exit 1
+        ;;
+esac
 echo "RELEASE=$RELEASE" >> "$GITHUB_OUTPUT"
+echo "ARCH=$ARCH" >> "$GITHUB_OUTPUT"
 
 # install depedencies
 curl -L -o /tmp/mmdebstrap.deb http://ftp.us.debian.org/debian/pool/main/m/mmdebstrap/mmdebstrap_1.5.7-3_all.deb
@@ -12,7 +24,6 @@ sudo apt install -yq /tmp/trisquelkey.deb
 
 # start build with mmdebstrap
 dist_version="$RELEASE"
-for ARCH in amd64 arm64; do
 sudo mmdebstrap \
     --arch=$ARCH \
     --variant=apt \
@@ -25,4 +36,3 @@ sudo mmdebstrap \
     "deb http://archive.trisquel.org/trisquel ${dist_version}-updates main" \
     "deb http://archive.trisquel.org/trisquel ${dist_version}-security main" \
     "deb http://archive.trisquel.org/trisquel ${dist_version}-backports main"
-done

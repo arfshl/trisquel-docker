@@ -9,18 +9,53 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+
+  build-and64:
+    runs-on: ubuntu-latest
+    outputs:
+      RELEASE: ${{ steps.start_build.outputs.RELEASE }}
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - id: start_build
+        run: |
+          bash build.sh
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: amd64
+          path: ./*.tar.gz
+
+  build-arm64:
+    runs-on: ubuntu-24.04-arm
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - id: start_build
+        run: |
+          bash build.sh
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: arm64
+          path: ./*.tar.gz
+
+  push:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
 
     steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v8
+
       - name: Checkout
         uses: actions/checkout@v6
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v4
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
@@ -35,10 +70,6 @@ jobs:
       - name: Downcase Repo Name
         run: echo "REPONAME=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
 
-      - name: Build
-        id: build
-        run: chmod +x build.sh && ./build.sh
-
       - name: Push to GHCR
         uses: docker/build-push-action@v7
         with:
@@ -47,4 +78,4 @@ jobs:
           platforms: linux/amd64, linux/arm64
           tags: |
             ghcr.io/${{ env.REPONAME }}:latest
-            ghcr.io/${{ env.REPONAME }}:${{ steps.build.outputs.RELEASE }}
+            ghcr.io/${{ env.REPONAME }}:${{ needs.build-x86_64.outputs.RELEASE }}
