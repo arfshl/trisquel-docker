@@ -79,4 +79,4 @@ jobs:
           platforms: linux/amd64, linux/arm64
           tags: |
             ghcr.io/${{ env.REPONAME }}:latest
-            ghcr.io/${{ env.REPONAME }}:${{ needs.build-x86_64.outputs.RELEASE }}
+            ghcr.io/${{ env.REPONAME }}:${{ needs.build-amd64.outputs.RELEASE }}
