@@ -36,6 +36,7 @@ jobs:
         run: echo "REPONAME=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
 
       - name: Build
+        id: build
         run: chmod +x build.sh && ./build.sh
 
       - name: Push to GHCR
