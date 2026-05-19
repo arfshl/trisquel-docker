@@ -52,11 +52,6 @@ jobs:
       packages: write
 
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v8
-        with:
-         path: .
-         merge-multiple: true
       
       - name: Checkout
         uses: actions/checkout@v6
@@ -73,6 +68,12 @@ jobs:
 
       - name: Downcase Repo Name
         run: echo "REPONAME=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
+
+      - name: Download artifact
+        uses: actions/download-artifact@v8
+        with:
+         path: .
+         merge-multiple: true
 
       - name: DEBUG; Check files
         run: ls -la
