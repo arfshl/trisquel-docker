@@ -55,6 +55,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v8
         with:
+         path: .
          merge-multiple: true
       
       - name: Checkout
