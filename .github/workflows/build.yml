@@ -73,6 +73,9 @@ jobs:
       - name: Downcase Repo Name
         run: echo "REPONAME=${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
 
+      - name: DEBUG; Check files
+        run: ls -la
+
       - name: Push to GHCR
         uses: docker/build-push-action@v7
         with:
