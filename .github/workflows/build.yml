@@ -54,7 +54,9 @@ jobs:
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v8
-
+        with:
+         merge-multiple: true
+      
       - name: Checkout
         uses: actions/checkout@v6
 
