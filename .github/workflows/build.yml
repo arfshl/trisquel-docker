@@ -17,6 +17,8 @@ jobs:
     strategy:
       matrix:
         arch: [x86_64, x86]
+    env:
+        ARCH: ${{ matrix.arch }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
@@ -36,6 +38,8 @@ jobs:
     strategy:
       matrix:
         arch: [aarch64, armhf]
+    env:
+        ARCH: ${{ matrix.arch }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5

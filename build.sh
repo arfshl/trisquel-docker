@@ -1,6 +1,5 @@
 # export the env
 export RELEASE=ecne
-ARCH=${{ matrix.arch }}
 case "$ARCH" in
     x86_64) ARCH=amd64 ;;
     amd64) ARCH=amd64 ;;
