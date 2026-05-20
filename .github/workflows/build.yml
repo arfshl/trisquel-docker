@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-24.04-arm
     strategy:
       matrix:
-        arch: [aarch64, armhf]
+        arch: [arm64, arm]
     env:
         ARCH: ${{ matrix.arch }}
     steps:
