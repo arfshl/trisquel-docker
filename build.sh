@@ -1,12 +1,13 @@
 # export the env
 export RELEASE=ecne
-ARCH=$(uname -m)
+ARCH=${{ matrix.arch }}
 case "$ARCH" in
     x86_64) ARCH=amd64 ;;
     amd64) ARCH=amd64 ;;
     aarch64) ARCH=arm64 ;;
     arm64) ARCH=arm64 ;;
     armhf) ARCH=armhf ;;
+    arm) ARCH=armhf ;;
     i386) ARCH=i386 ;;
     x86) ARCH=i386 ;;
     *)

@@ -14,6 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       RELEASE: ${{ steps.start_build.outputs.RELEASE }}
+    strategy:
+      matrix:
+        arch: [x86_64, x86]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
@@ -25,11 +28,14 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: amd64
+          name: amd
           path: ./*.tar.gz
 
   build-arm64:
     runs-on: ubuntu-24.04-arm
+    strategy:
+      matrix:
+        arch: [aarch64, armhf]
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v5
@@ -41,7 +47,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: arm64
+          name: arm
           path: ./*.tar.gz
 
   push:
