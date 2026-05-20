@@ -93,7 +93,10 @@ jobs:
         with:
           context: .
           push: true
-          platforms: linux/amd64, linux/arm64, linux/arm/v7
+          platforms: |
+            linux/amd64
+            linux/arm64
+            linux/arm/v7
           tags: |
             ghcr.io/${{ env.REPONAME }}:latest
             ghcr.io/${{ env.REPONAME }}:${{ needs.build-amd64.outputs.RELEASE }}
