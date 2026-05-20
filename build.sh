@@ -1,14 +1,13 @@
 # export the env
 export RELEASE=ecne
-export ARCH_ORIG=$ARCH
+export ARCH_DOCKER=$ARCH
 case "$ARCH" in
     x86_64) ARCH=amd64 ;;
     arm) ARCH=armhf ;;
     arm64) ARCH=arm64 ;;
-    *)
-        echo "Unsupported architecture: $ARCH"
-        exit 1
-        ;;
+esac
+case "$ARCH_DOCKER" in
+    x86_64) ARCH=amd64 ;;
 esac
 echo "RELEASE=$RELEASE" >> "$GITHUB_OUTPUT"
 echo "ARCH=$ARCH" >> "$GITHUB_OUTPUT"
@@ -30,7 +29,7 @@ sudo mmdebstrap \
     --include=trisquel-keyring,locales,passwd,software-properties-common,ca-certificates \
     --format=tar \
     ${dist_version} \
-    trisquel-$ARCH_ORIG.tar.gz \
+    trisquel-$ARCH_DOCKER.tar.gz \
     "deb http://archive.trisquel.org/trisquel ${dist_version} main" \
     "deb http://archive.trisquel.org/trisquel ${dist_version}-updates main" \
     "deb http://archive.trisquel.org/trisquel ${dist_version}-security main" \
