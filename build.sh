@@ -7,7 +7,7 @@ case "$ARCH" in
     arm64) ARCH=arm64 ;;
 esac
 case "$ARCH_DOCKER" in
-    x86_64) ARCH=amd64 ;;
+    x86_64) ARCH_DOCKER=amd64 ;;
 esac
 echo "RELEASE=$RELEASE" >> "$GITHUB_OUTPUT"
 echo "ARCH=$ARCH" >> "$GITHUB_OUTPUT"
