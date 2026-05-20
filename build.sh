@@ -3,6 +3,7 @@ export RELEASE=ecne
 case "$ARCH" in
     x86_64) ARCH=amd64 ;;
     arm) ARCH=armhf ;;
+    arm64) ARCH=arm64 ;;
     *)
         echo "Unsupported architecture: $ARCH"
         exit 1
