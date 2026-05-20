@@ -99,4 +99,4 @@ jobs:
             linux/arm/v7
           tags: |
             ghcr.io/${{ env.REPONAME }}:latest
-            ghcr.io/${{ env.REPONAME }}:${{ needs.build-amd64.outputs.RELEASE }}
+            ghcr.io/${{ env.REPONAME }}:${{ needs.build-amd.outputs.RELEASE }}
