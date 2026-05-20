@@ -1,5 +1,6 @@
 # export the env
 export RELEASE=ecne
+export ARCH_ORIG=$ARCH
 case "$ARCH" in
     x86_64) ARCH=amd64 ;;
     arm) ARCH=armhf ;;
@@ -29,7 +30,7 @@ sudo mmdebstrap \
     --include=trisquel-keyring,locales,passwd,software-properties-common,ca-certificates \
     --format=tar \
     ${dist_version} \
-    trisquel-$ARCH.tar.gz \
+    trisquel-$ARCH_ORIG.tar.gz \
     "deb http://archive.trisquel.org/trisquel ${dist_version} main" \
     "deb http://archive.trisquel.org/trisquel ${dist_version}-updates main" \
     "deb http://archive.trisquel.org/trisquel ${dist_version}-security main" \
