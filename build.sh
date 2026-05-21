@@ -29,7 +29,7 @@ sudo mmdebstrap \
     --include=trisquel-keyring,locales,passwd,software-properties-common,ca-certificates \
     --format=tar \
     ${dist_version} \
-    trisquel-$ARCH_DOCKER.tar.gz \
+    trisquel-$ARCH_DOCKER.tar.xz \
     "deb http://archive.trisquel.org/trisquel ${dist_version} main" \
     "deb http://archive.trisquel.org/trisquel ${dist_version}-updates main" \
     "deb http://archive.trisquel.org/trisquel ${dist_version}-security main" \

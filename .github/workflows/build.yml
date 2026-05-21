@@ -31,7 +31,8 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: amd
-          path: ./*.tar.gz
+          path: ./*.tar.xz
+          archive: false
 
   build-arm64:
     runs-on: ubuntu-24.04-arm
@@ -52,7 +53,8 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: arm64
-          path: ./*.tar.gz
+          path: ./*.tar.xz
+          archive: false
 
   build-arm:
     runs-on: ubuntu-24.04-arm
@@ -73,7 +75,8 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: arm
-          path: ./*.tar.gz
+          path: ./*.tar.xz
+          archive: false
 
   push:
     runs-on: ubuntu-latest
