@@ -118,7 +118,7 @@ jobs:
       - name: DEBUG; Check files
         run: ls -la
 
-      - name: Push to GHCR
+      - name: Push to GHCR and Docker Hub
         uses: docker/build-push-action@v7
         with:
           context: .
