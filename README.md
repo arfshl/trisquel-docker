@@ -1,6 +1,6 @@
 # trisquel-docker
 
-Unofficial docker image for Trisquel GNU/Linux-Libre
+Unofficial docker image for Trisquel GNU/Linux-Libre. Supports multi-arch.
 
 #### Supported arch and tags
 - Supported arch: `amd64` `arm64` `arm/v7` `ppc64le`
