@@ -154,6 +154,6 @@ jobs:
             linux/ppc64le
           tags: |
             ghcr.io/${{ env.REPONAME }}:latest
-            ghcr.io/${{ env.REPONAME }}:${{ needs.build-amd.outputs.RELEASE }}
+            ghcr.io/${{ env.REPONAME }}:${{ needs.build-amd64.outputs.RELEASE }}
             arfshl/trisquel:latest
-            arfshl/trisquel:${{ needs.build-amd.outputs.RELEASE }}
+            arfshl/trisquel:${{ needs.build-amd64.outputs.RELEASE }}
