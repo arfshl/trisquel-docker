@@ -3,6 +3,8 @@ export RELEASE=aramo
 case "$ARCH" in
     armhf) ARCH_DOCKER=arm ;;
     ppc64el) ARCH_DOCKER=ppc64le ;;
+    arm64) ARCH_DOCKER=arm64 ;;
+    amd64) ARCH_DOCKER=amd64 ;;
 esac
 echo "RELEASE=$RELEASE" >> "$GITHUB_OUTPUT"
 echo "ARCH=$ARCH" >> "$GITHUB_OUTPUT"
