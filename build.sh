@@ -1,13 +1,10 @@
 # export the env
 export RELEASE=ecne
-export ARCH_DOCKER=$ARCH
 case "$ARCH" in
-    x86_64) ARCH=amd64 ;;
-    arm) ARCH=armhf ;;
-    arm64) ARCH=arm64 ;;
-esac
-case "$ARCH_DOCKER" in
     x86_64) ARCH_DOCKER=amd64 ;;
+    arm) ARCH_DOCKER=armhf ;;
+    arm64) ARCH_DOCKER=arm64 ;;
+    ppc64el) ARCH_DOCKER=ppc64le ;;
 esac
 echo "RELEASE=$RELEASE" >> "$GITHUB_OUTPUT"
 echo "ARCH=$ARCH" >> "$GITHUB_OUTPUT"

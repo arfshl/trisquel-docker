@@ -78,9 +78,33 @@ jobs:
           path: ./*.tar.xz
           archive: false
 
+  build-ppc64el:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: [arm]
+    env:
+        ARCH: ${{ matrix.arch }}
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - id: start_build
+        run: |
+          bash build.sh
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: ppc64el
+          path: ./*.tar.xz
+          archive: false
+
   push:
     runs-on: ubuntu-latest
-    needs: [build-amd, build-arm64, build-arm]
+    needs: [build-amd, build-arm64, build-arm, build-ppc64el]
     permissions:
       contents: read
       packages: write
@@ -127,6 +151,7 @@ jobs:
             linux/amd64
             linux/arm64
             linux/arm/v7
+            linux/ppc64le
           tags: |
             ghcr.io/${{ env.REPONAME }}:latest
             ghcr.io/${{ env.REPONAME }}:${{ needs.build-amd.outputs.RELEASE }}

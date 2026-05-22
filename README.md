@@ -3,7 +3,7 @@
 Unofficial docker image for Trisquel GNU/Linux-Libre
 
 #### Supported arch and tags
-- `amd64` `arm64` and `arm/v7` are supported
+- Supported arch: `amd64` `arm64` `arm/v7` `ppc64le`
 - `latest` tag is always the most recent version currently available. pull with:
 
       docker pull arfshl/trisquel:latest
