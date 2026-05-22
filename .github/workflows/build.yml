@@ -5,7 +5,7 @@ on:
     - cron: "0 0 * * 0"
   push:
     branches: [ main ]
-    paths: [ 'build.sh', 'Dockerfile', '.github/workflows/build.yml' ]
+    paths: [ 'build.sh','Dockerfile','.github/workflows/build.yml' ]
   workflow_dispatch:
 
 jobs:
