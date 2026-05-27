@@ -1,5 +1,5 @@
 # export the env
-export RELEASE=aramo
+export RELEASE=ecne
 case "$ARCH" in
     armhf) ARCH_DOCKER=arm ;;
     ppc64el) ARCH_DOCKER=ppc64le ;;
