@@ -1,5 +1,5 @@
 # export the env
-export RELEASE=ecne
+export RELEASE=$(curl -s https://archive.trisquel.org/trisquel/meta-release | grep "Dist:" | tail -n 1 | cut -d' ' -f2)
 case "$ARCH" in
     armhf) ARCH_DOCKER=arm ;;
     ppc64el) ARCH_DOCKER=ppc64le ;;
